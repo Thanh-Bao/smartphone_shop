@@ -18,7 +18,7 @@ let access_token = "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vYWMyZDFlZmV0cmlhbC5h
 // *****************************************************************************************
 
 
-app.get('/:abc/:d', (req, res) => {
+app.get('/:abc', (req, res) => {
     console.log('Hello');
     res.send(req.params)
 })

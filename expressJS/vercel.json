@@ -8,8 +8,8 @@
     ],
     "routes": [
         {
-            "src": "./:abc/:d",
-            "dest": "./:abc/:d"
+            "src": "./:abc",
+            "dest": "./:abc"
         }
     ]
 }
