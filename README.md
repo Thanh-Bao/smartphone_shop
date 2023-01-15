@@ -17,11 +17,11 @@ Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
 
 To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st.hcmuaf.edu.vn&password=<password>
 
-#Link reference:
+# Link reference:
 
 - Enable JWT SAP RAP BTP: https://www.youtube.com/watch?v=0jKsN2z_0XE
 - To use refresh_token: https://help.sap.com/docs/IDENTITY_AUTHENTICATION/6d6d63354d1242d185ab4830fc04feb1/c62c09e058884f6ca49f7158e2b41321.html
 - Deploy expressJS on Vercel: https://www.youtube.com/watch?v=OoI87qhiFlQ
 
-#Tutorial
+# Tutorial
 https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
