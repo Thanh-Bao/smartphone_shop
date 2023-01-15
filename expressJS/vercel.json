@@ -9,7 +9,7 @@
     "routes": [
         {
             "src": "./:abc",
-            "dest": "./:abc"
+            "dest": "./"
         }
     ]
 }
