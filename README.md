@@ -1,9 +1,9 @@
-| Instance name | domain                                                                                                                                       | Infrastructur            |                                            | Note                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------ | --------------------------- |
-| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                |                                            | Domain not contain "_-web_" |
-| ExpressJS     | [expressjs.bao.name.vn](https://expressjs.bao.name.vn)                                                                                       | [Vercel.com](Vercel.com) | Bypass CORS, Authorization (JWT)           |                             |
-| NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)       | Home page, Product detail.                 |                             |
-| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)       | Profile page, order page, login page, etc. |                             |
+| Instance name | domain                                                                                                                                       | Infrastructur                |                                            | Note                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------ | --------------------------- |
+| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                    |                                            | Domain not contain "_-web_" |
+| ExpressJS     | [expressjs.bao.name.vn](https://expressjs.bao.name.vn)                                                                                       | [deno.com](https://deno.com) | Bypass CORS, Authorization (JWT)           |                             |
+| NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)           | Home page, Product detail.                 |                             |
+| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)           | Profile page, order page, login page, etc. |                             |
 
 ---
 
@@ -24,10 +24,12 @@ To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st
 - Deploy expressJS on Vercel: https://www.youtube.com/watch?v=OoI87qhiFlQ
 
 <<<<<<< Updated upstream
+
 # Tutorial
-https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
-=======
+
+# https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
+
 #Tutorial
 
 - https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
->>>>>>> Stashed changes
+  > > > > > > > Stashed changes
