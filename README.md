@@ -1,3 +1,10 @@
+[![](https://img.shields.io/appveyor/build/gruntjs/grunt)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+[![](https://img.shields.io/cirrus/github/flutter/flutter)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+[![](https://img.shields.io/badge/tests-100%25-brightgreen)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+[![](https://img.shields.io/badge/docs-passing-brightgreen)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+[![](https://img.shields.io/badge/style-plastic-green.svg?longCache=true&style=plastic)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+[![](https://img.shields.io/github/stars/badges/shields.svg?style=social)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
+
 | Instance name | domain                                                                                                                                       | Infrastructur                  |                                            | Note                        |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------ | --------------------------- |
 | SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                      |                                            | Domain not contain "_-web_" |
@@ -21,7 +28,6 @@ To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st
 
 - Enable JWT SAP RAP BTP: https://www.youtube.com/watch?v=0jKsN2z_0XE
 - To use refresh_token: https://help.sap.com/docs/IDENTITY_AUTHENTICATION/6d6d63354d1242d185ab4830fc04feb1/c62c09e058884f6ca49f7158e2b41321.html
-- Deploy expressJS on Vercel: https://www.youtube.com/watch?v=OoI87qhiFlQ
 
 # Tutorial
 
