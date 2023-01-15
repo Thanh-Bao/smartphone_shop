@@ -1,9 +1,12 @@
-import express from "npm:express@4.18.2";
+import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 
-const app = express();
-
-app.get("/:a/:b", (req, res) => {
-  res.send(req.params);
+const router = new Router();
+router.get("/:abc/:iiii", (ctx) => {
+  ctx.response.body = ctx;
 });
 
-app.listen(8000);
+const app = new Application();
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+app.listen({ port: 8080 });
