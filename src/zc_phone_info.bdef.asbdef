@@ -1,0 +1,8 @@
+projection;
+
+define behavior for ZC_PHONE_INFO
+{
+  use create;
+  use update;
+  use delete;
+}

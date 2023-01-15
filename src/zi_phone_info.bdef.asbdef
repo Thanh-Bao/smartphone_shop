@@ -1,0 +1,13 @@
+managed;
+
+define behavior for ZI_PHONE_INFO
+persistent table zphone_info
+lock master
+
+{
+  create;
+  update;
+  delete;
+
+  mapping for zphone_info corresponding {}
+}
