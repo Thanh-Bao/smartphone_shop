@@ -79,7 +79,8 @@ router.get("/", (ctx) => {
       Path: "/ZBUI_PHONE_INFO/ZC_PHONE_INFO"
     }],
     site_map: {
-      new_token: "/renew_access_token"
+      new_token: "/renew_access_token",
+      CronJob_renew_token: "/renew_access_token?isCronJob=true"
     }
   };
 });
