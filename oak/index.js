@@ -7,11 +7,18 @@ import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { encode, decode } from "https://deno.land/std/encoding/base64.ts"
 import { Client } from "https://deno.land/x/mysql/mod.ts";
 
-import { access_token, refresh_toke, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token } from './config.js';
+import { access_token, refresh_toke, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token, MySQL_config } from './config.js';
 
 const router = new Router();
 
+const MySQL_client = await new Client().connect(MySQL_config);
+
+// For Cronb Job servie: /renew_access_token?isCronJob=true
 router.get("/renew_access_token", async (ctx) => {
+
+  const isCronJob = Boolean(ctx.request.url.searchParams.get('isCronJob'));
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+
   //🤩🤩 Imperative Programming : 🤩🤩
   try {
     const basic_auth = encode(`${accountAuthen.username}:${accountAuthen.password}`);
@@ -27,10 +34,18 @@ router.get("/renew_access_token", async (ctx) => {
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
     const JWT_expired = JWT_payload.exp;
     // 4. Insert log 
+    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
+      currentTimestamp, access_token, refresh_toke, JWT_expired, true, isCronJob, null
+    ]);
+    console.log(SQL_result);
+    // 5. Finish
     ctx.response.body = { ...json, __________token_after_decode__________: JWT_payload };
   } catch (error) {
-    console.log(error);
-    ctx.response.body = "handle BASIC AUTH fail !";
+    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
+      currentTimestamp, null, null, null, false, isCronJob, error.message
+    ]);
+    console.log(SQL_result);
+    ctx.response.body = error.message;
     ctx.response.status = 401;
   }
 });
@@ -50,7 +65,7 @@ router.all("/:ZBUI/:Entity", async (ctx) => {
       return phone;
     });
   } catch (error) {
-    ctx.response.body = "Can not fetch data from SAP BTP cockpit, Please check your token!";
+    ctx.response.body = error.message;
     ctx.response.status = 500;
   }
 

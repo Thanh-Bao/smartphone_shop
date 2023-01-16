@@ -27,10 +27,11 @@ export const setRefresh_token = (new_token) => refresh_toke = new_token;
 
 // **********************************************************************************************************************************************
 
-export const MySQL = {
-    IP: "45.252.250.6",
-    port: 3306,
-    Name: "elhnhxqj_oak",
+export const MySQL_config = {
+    hostname: "45.252.250.6",
     username: "elhnhxqj_oak",
+    db: "elhnhxqj_oak",
+    poolSize: 3, // connection pool limit
     password: "Admin123@#AAA",
 }
+
