@@ -25,7 +25,7 @@ const fetchNewToken = async () => {
   return json;
 }
 
-fetchNewToken();
+await fetchNewToken();
 
 // For Cronb Job servie: /renew_access_token?isCronJob=true
 router.get("/renew_access_token", async (ctx) => {
