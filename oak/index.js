@@ -22,6 +22,7 @@ const getNewAccessToken = async () => {
   const json = await SAPresponse.json();
   setAccess_token(json.access_token);
   setRefresh_token(json.refresh_token);
+  return json;
 }
 
 getNewAccessToken();
@@ -34,21 +35,21 @@ router.get("/renew_access_token", async (ctx) => {
 
   //🤩🤩 Imperative Programming : 🤩🤩
   try {
-    getNewAccessToken();
+    const json = getNewAccessToken();
     const JWT = json.access_token.split(".");
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
     const JWT_expired = JWT_payload.exp;
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
       currentTimestamp, access_token, refresh_token, JWT_expired, true, isCronJob, null
     ]);
-    console.log(SQL_result);
+    console.log(...json, SQL_result);
     // 4. Finish
     ctx.response.body = { ...json, __________token_after_decode__________: JWT_payload };
   } catch (error) {
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
       currentTimestamp, null, null, null, false, isCronJob, error.message
     ]);
-    console.log(SQL_result);
+    console.log(error.message, SQL_result);
     ctx.response.body = error.message;
     ctx.response.status = 401;
   }
