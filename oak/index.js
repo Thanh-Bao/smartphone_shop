@@ -25,7 +25,7 @@ const getNewAccessToken = async () => {
   return json;
 }
 
-getNewAccessToken();
+await getNewAccessToken();
 
 // For Cronb Job servie: /renew_access_token?isCronJob=true
 router.get("/renew_access_token", async (ctx) => {
@@ -35,7 +35,7 @@ router.get("/renew_access_token", async (ctx) => {
 
   //🤩🤩 Imperative Programming : 🤩🤩
   try {
-    const json = getNewAccessToken();
+    const json = await getNewAccessToken();
     const JWT = json.access_token.split(".");
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
     const JWT_expired = JWT_payload.exp;
