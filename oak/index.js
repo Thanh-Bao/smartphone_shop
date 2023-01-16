@@ -1,25 +1,28 @@
 // To run project:
 
-// denon run --allow-env --allow-net main.js
+// denon run --allow-env --allow-net index.js
 
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
+import { encode, decode } from "https://deno.land/std/encoding/base64.ts"
 
-import { renewAccessToken } from './helper.js';
 import { access_token, refresh_toke, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token } from './config.js';
 
 const router = new Router();
 
-router.get("/renew_access_token", (ctx) => {
-
+router.get("/renew_access_token", async (ctx) => {
   try {
-
+    const basic_auth = encode(`${accountAuthen.username}:${accountAuthen.password}`);
+    const SAPresponse = await fetch(getNewAccessTokenURL, {
+      headers: { "Authorization": `Basic ${basic_auth}` }
+    });
+    const json = await SAPresponse.json();
+    setAccess_token(json.access_token);
+    ctx.response.body = json;
   } catch (error) {
-
+    ctx.response.body = "Can not fetch data from SAP BTP cockpit, BASIC AUTH fail";
+    ctx.response.status = 401;
   }
-
-  // console.log(access_token);
-  // ctx.response.body = renewAccessToken("hê");
 });
 
 
@@ -37,7 +40,6 @@ router.all("/:ZBUI/:Entity", async (ctx) => {
       return phone;
     });
   } catch (error) {
-    console.log(error);
     ctx.response.body = "Can not fetch data from SAP BTP cockpit, Please check your token!";
     ctx.response.status = 500;
   }
@@ -45,11 +47,16 @@ router.all("/:ZBUI/:Entity", async (ctx) => {
 });
 
 router.get("/", (ctx) => {
-  ctx.response.body = [{
-    Service_binding: "ZBUI_PHONE_INFO",
-    Entity: ["ZC_PHONE_INFO"],
-    Path: "/ZBUI_PHONE_INFO/ZC_PHONE_INFO"
-  }];
+  ctx.response.body = {
+    SAP: [{
+      Service_binding: "ZBUI_PHONE_INFO",
+      Entity: ["ZC_PHONE_INFO"],
+      Path: "/ZBUI_PHONE_INFO/ZC_PHONE_INFO"
+    }],
+    site_map: {
+      new_token: "/renew_access_token"
+    }
+  };
 });
 
 
