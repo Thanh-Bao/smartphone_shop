@@ -5,12 +5,13 @@
 [![](https://img.shields.io/badge/style-plastic-green.svg?longCache=true&style=plastic)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
 [![](https://img.shields.io/github/stars/badges/shields.svg?style=social)](https://github.com/Thanh-Bao/FrontEnd-real-estate-news-website)
 
-| Instance name | domain /IP                                                                                                                                   | Infrastructur                  |                                            | Note                        |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------ | --------------------------- |
-| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                      |                                            | Domain not contain "_-web_" |
-| Oak           | [oak.bao.name.vn](https://oak.bao.name.vn)                                                                                                   | [deno.land](https://deno.land) | Bypass CORS, Authorization (JWT)           |                             |
-| NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)             | Home page, Product detail.                 |                             |
-| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)             | Profile page, order page, login page, etc. |                             |
+| Instance name | domain /IP                                                                                                                                   | Infrastructur                    |                                            | Note                        |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------------------------------------------ | --------------------------- |
+| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                        |                                            | Domain not contain "_-web_" |
+| Oak           | [oak.bao.name.vn](https://oak.bao.name.vn)                                                                                                   | [deno.land](https://deno.land)   | Bypass CORS, Authorization (JWT)           |                             |
+| NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)               | Home page, Product detail.                 |                             |
+| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)               | Profile page, order page, login page, etc. |                             |
+| MySQL         | 45.252.250.6                                                                                                                                 | [azdigi.com](https://azdigi.com) | logger for Oak                             |                             |
 
 ---
 
