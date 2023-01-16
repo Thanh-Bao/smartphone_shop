@@ -41,7 +41,10 @@ router.all("/:ZBUI/:Entity", async (ctx) => {
       headers: { "Authorization": `Bearer ${access_token}` }
     });
     const json = await SAPresponse.json();
-    ctx.response.body = json;
+    ctx.response.body = json.d.results.map(phone => {
+      delete phone.__metadata;
+      return phone;
+    });
   } catch (error) {
     console.log(error);
     ctx.response.body = "Can not fetch data from SAP BTP cockpit, Please check your token!";
