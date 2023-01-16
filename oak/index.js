@@ -13,19 +13,19 @@ const router = new Router();
 
 const MySQL_client = await new Client().connect(MySQL_config);
 
-
-const getNewAccessToken = async () => {
+const fetchNewToken = async () => {
   const basic_auth = encode(`${accountAuthen.username}:${accountAuthen.password}`);
   const SAPresponse = await fetch(getNewAccessTokenURL, {
     headers: { "Authorization": `Basic ${basic_auth}` }
   });
+  // 1. get new token from SAP server
   const json = await SAPresponse.json();
+  // 2. set new token on this Oak server
   setAccess_token(json.access_token);
-  setRefresh_token(json.refresh_token);
   return json;
 }
 
-await getNewAccessToken();
+fetchNewToken();
 
 // For Cronb Job servie: /renew_access_token?isCronJob=true
 router.get("/renew_access_token", async (ctx) => {
@@ -35,15 +35,17 @@ router.get("/renew_access_token", async (ctx) => {
 
   //🤩🤩 Imperative Programming : 🤩🤩
   try {
-    const json = await getNewAccessToken();
+    const json = await fetchNewToken();
+    // 3. get time expried token
     const JWT = json.access_token.split(".");
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
     const JWT_expired = JWT_payload.exp;
+    // 4. Insert log 
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
       currentTimestamp, access_token, refresh_token, JWT_expired, true, isCronJob, null
     ]);
-    console.log(...json, SQL_result);
-    // 4. Finish
+    console.log(json, SQL_result);
+    // 5. Finish
     ctx.response.body = { ...json, __________token_after_decode__________: JWT_payload };
   } catch (error) {
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
@@ -89,6 +91,8 @@ router.get("/", (ctx) => {
     }
   };
 });
+
+
 
 
 const app = new Application();
