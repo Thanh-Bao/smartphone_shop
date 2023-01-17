@@ -17,13 +17,21 @@
 
 # SAP
 
-Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
+- Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
+- Package: ZSMARTPHONE_SHOP
 
 | Transport request | Owner        | Target | Description     |
 | ----------------- | ------------ | ------ | --------------- |
 | TRLK912520        | CB9980007210 |        | Smartphone Shop |
 
 To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st.hcmuaf.edu.vn&password=< password >
+
+# VPS for reactJS & NextJS
+
+Ubuntu -> docker -> nginx
+
+- account: bao
+- password: Admin123@#AAA
 
 # Link reference:
 
