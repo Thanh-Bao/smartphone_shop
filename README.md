@@ -18,7 +18,7 @@
 | Service name                       | Target      | Description                       |
 | ---------------------------------- | ----------- | --------------------------------- |
 | [cron-job.org](cron-job.org)       | oak server  | renew token, monitor, email alert |
-| [uptimerobot.com](uptimerobot.com) | oak, nextJS | monitor, discord notify           |
+| [uptimerobot.com](uptimerobot.com) | oak, nextJS | monitor, email alert              |
 | [discord.com](discord.com)         | SAP         | new order notifications           |
 
 ---
