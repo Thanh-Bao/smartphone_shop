@@ -8,6 +8,7 @@ import { encode, decode } from "https://deno.land/std/encoding/base64.ts"
 import { Client } from "https://deno.land/x/mysql/mod.ts";
 
 import { access_token, refresh_token, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token, MySQL_config } from './config.js';
+import { formatDateTime } from './helper.js';
 
 const router = new Router();
 
@@ -78,16 +79,29 @@ router.all("/:ZBUI/:Entity", async (ctx) => {
 
 });
 
-router.get("/", (ctx) => {
+router.get("/", async (ctx) => {
+
+  const token_Log = await MySQL_client.query(`select * from Token_Log ORDER BY timestamp DESC LIMIT 1`);
+  const isSuccess = await MySQL_client.query(`select count(*) from Token_Log where isSuccess = 1`);
+  const isFail = await MySQL_client.query(`select count(*) from Token_Log where isSuccess = 0`);
+
   ctx.response.body = {
-    SAP: [{
+    ____________________________________SAP_Trial_Entity_List____________________________________: [{
       Service_binding: "ZBUI_PHONE_INFO",
       Entity: ["ZC_PHONE_INFO"],
       Path: "/ZBUI_PHONE_INFO/ZC_PHONE_INFO"
     }],
-    site_map: {
+    ____________________________________site_map____________________________________: {
       new_token_manual: "/renew_access_token",
       CronJob_renew_token: "/renew_access_token?isCronJob=true"
+    },
+    ____________________________________current_token____________________________________: {
+      ...token_Log["0"]
+      , timestamp: formatDateTime(token_Log["0"].timestamp), Expired_time: formatDateTime(token_Log["0"].Expired_time)
+    },
+    ____________________________________statistical____________________________________: {
+      total_Success: isSuccess[0]["count(*)"],
+      total_Fail: isFail[0]["count(*)"]
     }
   };
 });
