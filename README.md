@@ -27,6 +27,8 @@
 
 ![img](https://github.com/Thanh-Bao/smartphone_shop/blob/5de0ff74db9a3b28e5d403c8e36cf50e9b097d7d/oak.bao.name.vn.drawio.svg)
 
+---
+
 # SAP
 
 - Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
@@ -49,8 +51,6 @@ app.get("/p/:abc/:xyz", function (req, res) {
 On Vercel PaaS service, can not get abc, xyz value. But it works at localhost.
 
 # VPS for reactJS & NextJS
-
-Ubuntu -> docker -> nginx
 
 - account: bao
 - password: Admin123@#AAA
