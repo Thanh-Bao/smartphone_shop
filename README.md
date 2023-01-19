@@ -16,12 +16,12 @@
 
 ---
 
-| Service name                       | Target      | Description                                                  |
-| ---------------------------------- | ----------- | ------------------------------------------------------------ |
-| [cron-job.org](cron-job.org)       | oak server  | renew token, monitor, email alert                            |
-| [uptimerobot.com](uptimerobot.com) | oak, nextJS | monitor, email alert                                         |
-| [checklyhq.com](checklyhq.com)     | oak, nextJS | monitor, email alert, speed test in many different countries |
-| [discord.com](discord.com)         | SAP         | new order notifications                                      |
+| Service name                               | Target      | Description                                                  |
+| ------------------------------------------ | ----------- | ------------------------------------------------------------ |
+| [cron-job.org](https://cron-job.org)       | oak server  | renew token, monitor, email alert                            |
+| [uptimerobot.com](https://uptimerobot.com) | oak, nextJS | monitor, email alert                                         |
+| [checklyhq.com](https://checklyhq.com)     | oak, nextJS | monitor, email alert, speed test in many different countries |
+| [discord.com](https://discord.com)         | SAP         | new order notifications                                      |
 
 ---
 
@@ -44,7 +44,7 @@ app.get("/p/:abc/:xyz", function (req, res) {
 }); // ExpressJS controller
 ```
 
-On Vercel PaaS service, can not get abc, xyz value.
+On Vercel PaaS service, can not get abc, xyz value. But it works at localhost.
 
 # VPS for reactJS & NextJS
 
