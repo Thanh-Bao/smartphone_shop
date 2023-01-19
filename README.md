@@ -25,6 +25,8 @@
 
 ---
 
+![img](https://github.com/Thanh-Bao/smartphone_shop/blob/5de0ff74db9a3b28e5d403c8e36cf50e9b097d7d/oak.bao.name.vn.drawio.svg)
+
 # SAP
 
 - Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
