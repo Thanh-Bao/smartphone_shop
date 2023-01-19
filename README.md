@@ -25,7 +25,7 @@
 
 ---
 
-![img](https://github.com/Thanh-Bao/smartphone_shop/blob/5de0ff74db9a3b28e5d403c8e36cf50e9b097d7d/oak.bao.name.vn.drawio.svg)
+![img](https://raw.githubusercontent.com/Thanh-Bao/smartphone_shop/e2222f3b29a3d8b5890258e8d1ae66154ae70959/design_system.jpg?token=GHSAT0AAAAAAB5BBYG3MXSQJVHKWBZEDBBOY6IYYNA)
 
 ---
 
