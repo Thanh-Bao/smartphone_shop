@@ -10,6 +10,8 @@ import { Client } from "https://deno.land/x/mysql/mod.ts";
 import { access_token, refresh_token, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token, MySQL_config } from './config.js';
 import { formatDateTime } from './helper.js';
 
+const GMT_7 = 25200;
+
 const router = new Router();
 
 const MySQL_client = await new Client().connect(MySQL_config);
@@ -43,14 +45,14 @@ router.get("/renew_access_token", async (ctx) => {
     const JWT_expired = JWT_payload.exp;
     // 4. Insert log 
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
-      currentTimestamp, access_token, refresh_token, JWT_expired, true, isCronJob, null
+      currentTimestamp + GMT_7, access_token, refresh_token, JWT_expired + GMT_7, true, isCronJob, null
     ]);
     console.log(json, SQL_result);
     // 5. Finish
     ctx.response.body = { ...json, __________token_after_decode__________: JWT_payload };
   } catch (error) {
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
-      currentTimestamp, null, null, null, false, isCronJob, error.message
+      currentTimestamp + GMT_7, null, null, null, false, isCronJob, error.message
     ]);
     console.log(error.message, SQL_result);
     ctx.response.body = error.message;
