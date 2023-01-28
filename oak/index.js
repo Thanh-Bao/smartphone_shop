@@ -9,6 +9,8 @@ import { decode } from "https://deno.land/std/encoding/base64.ts"
 import { access_token, baseURL, MySQL_config } from './config.js';
 import { formatDateTime, fetchNewToken } from './helper.js';
 
+const GMT_7 = 25200;
+
 const router = new Router();
 
 const MySQL_client = await new Client().connect(MySQL_config);
@@ -19,14 +21,14 @@ await fetchNewToken();
 router.get("/renew_access_token", async (ctx) => {
 
   const isCronJob = Boolean(ctx.request.url.searchParams.get('isCronJob'));
-  const currentTimestamp = Math.floor(Date.now() / 1000);
+  const currentTimestamp = Math.floor(Date.now() / 1000) + GMT_7;
 
   try {
     const json = await fetchNewToken();
     // 3. get time expried token
     const JWT = json.access_token.split(".");
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
-    const JWT_expired = JWT_payload.exp;
+    const JWT_expired = JWT_payload.exp + GMT_7;
     // 4. Insert log 
     const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?)`, [
       currentTimestamp, access_token, JWT_expired, true, isCronJob, null
