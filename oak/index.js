@@ -1,32 +1,17 @@
 // To run project:
-
 // denon run --allow-env --allow-net index.js
 
 import { Application, Router } from "https://deno.land/x/oak/mod.ts";
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
-import { encode, decode } from "https://deno.land/std/encoding/base64.ts"
 import { Client } from "https://deno.land/x/mysql/mod.ts";
+import { decode } from "https://deno.land/std/encoding/base64.ts"
 
-import { access_token, refresh_token, accountAuthen, authenURL, getNewAccessTokenURL, baseURL, setAccess_token, setRefresh_token, MySQL_config } from './config.js';
-import { formatDateTime } from './helper.js';
-
-const GMT_7 = 25200;
+import { access_token, baseURL, MySQL_config } from './config.js';
+import { formatDateTime, fetchNewToken } from './helper.js';
 
 const router = new Router();
 
 const MySQL_client = await new Client().connect(MySQL_config);
-
-const fetchNewToken = async () => {
-  const basic_auth = encode(`${accountAuthen.username}:${accountAuthen.password}`);
-  const SAPresponse = await fetch(getNewAccessTokenURL, {
-    headers: { "Authorization": `Basic ${basic_auth}` }
-  });
-  // 1. get new token from SAP server
-  const json = await SAPresponse.json();
-  // 2. set new token on this Oak server
-  setAccess_token(json.access_token);
-  return json;
-}
 
 await fetchNewToken();
 
@@ -36,7 +21,6 @@ router.get("/renew_access_token", async (ctx) => {
   const isCronJob = Boolean(ctx.request.url.searchParams.get('isCronJob'));
   const currentTimestamp = Math.floor(Date.now() / 1000);
 
-  //🤩🤩 Imperative Programming : 🤩🤩
   try {
     const json = await fetchNewToken();
     // 3. get time expried token
@@ -44,15 +28,15 @@ router.get("/renew_access_token", async (ctx) => {
     const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
     const JWT_expired = JWT_payload.exp;
     // 4. Insert log 
-    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
-      currentTimestamp + GMT_7, access_token, refresh_token, JWT_expired + GMT_7, true, isCronJob, null
+    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?)`, [
+      currentTimestamp, access_token, JWT_expired, true, isCronJob, null
     ]);
     console.log(json, SQL_result);
     // 5. Finish
     ctx.response.body = { ...json, __________token_after_decode__________: JWT_payload };
   } catch (error) {
-    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,Refresh_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?,?)`, [
-      currentTimestamp + GMT_7, null, null, null, false, isCronJob, error.message
+    const SQL_result = await MySQL_client.execute(`INSERT INTO Token_Log(timestamp,	Access_Token,	Expired_time,isSuccess,isCronJob,Error_message) values(?,?,?,?,?,?)`, [
+      currentTimestamp, null, null, false, isCronJob, error.message
     ]);
     console.log(error.message, SQL_result);
     ctx.response.body = error.message;
