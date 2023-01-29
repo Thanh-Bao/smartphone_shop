@@ -68,14 +68,14 @@ CLASS zcl_test_phone_info IMPLEMENTATION.
 
         WHEN 'R_All'.
 
-        READ ENTITIES OF zi_phone_info
-        ENTITY zi_phone_info
-         ALL FIELDS WITH value #( (  ) )
-         RESULT DATA(list_phone)
-         FAILED lt_failed
-           REPORTED lt_reported.
-
-        out->write( list_phone ).
+*        READ ENTITIES OF zi_phone_info
+*        ENTITY zi_phone_info
+*         ALL FIELDS WITH value #( (  ) )
+*         RESULT DATA(list_phone)
+*         FAILED lt_failed
+*           REPORTED lt_reported.
+*
+*        out->write( list_phone ).
         RETURN.
 
       WHEN 'D'.
