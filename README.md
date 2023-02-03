@@ -34,9 +34,9 @@
 - Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
 - Package: ZSMARTPHONE_SHOP
 
-| Transport request | Owner        | Target | Description     |
-| ----------------- | ------------ | ------ | --------------- |
-| TRLK912520        | CB9980007210 |        | Smartphone Shop |
+| Transport request | Owner        | User UUID                           | Target | Description     |
+| ----------------- | ------------ | ----------------------------------- | ------ | --------------- |
+| TRLK912520        | CB9980007210 |8593f739-10e6-47e4-a4d1-d3020b21ac88 |        | Smartphone Shop |
 
 To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st.hcmuaf.edu.vn&password=< password >
 
