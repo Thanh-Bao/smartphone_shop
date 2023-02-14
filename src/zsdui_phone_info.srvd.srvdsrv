@@ -1,4 +1,0 @@
-@EndUserText.label: '.'
-define service ZSDUI_PHONE_INFO {
-  expose ZC_PHONE_INFO;
-}
