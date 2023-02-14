@@ -1,0 +1,12 @@
+managed; //implementation in class zbp_i_phone_info2 unique;
+
+define behavior for ZI_PHONE_INFO2
+persistent table ZPHONE_INFO2
+lock master
+{
+  create;
+  update;
+  delete;
+
+  mapping for zphone_info2 corresponding {}
+}
