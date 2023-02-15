@@ -2,12 +2,18 @@
 annotate view ZC_PHONE_INFO2 with
 {
 
-@UI.facet: [{
-
-           type: #IDENTIFICATION_REFERENCE,
-           label: 'Phone Info',
-           purpose: #STANDARD
-            }]
+  @UI.facet: [{
+              id: 'Phone_Info',
+             type: #IDENTIFICATION_REFERENCE,
+             label: 'Phone Info',
+             purpose: #STANDARD
+              }, {
+              id: 'Upload',
+              type: #LINEITEM_REFERENCE,
+              label: 'Upload image',
+              purpose: #STANDARD,
+              targetElement: '_Phone_Images'
+              }]
 
   @UI.identification: [{ position: 10 }]
   @EndUserText.label: 'ID'

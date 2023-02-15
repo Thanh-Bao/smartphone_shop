@@ -19,5 +19,6 @@ define root view entity ZC_PHONE_INFO2 as projection on ZI_PHONE_INFO2
       rear_camera,
       release_year,
       sim,
-      status
+      status,
+      _Phone_Images: redirected to composition child ZC_PHONE_IMAGE2
 }

@@ -1,4 +1,5 @@
 @EndUserText.label: '.'
 define service ZSDUI_PHONE_INFO2 {
   expose ZC_PHONE_INFO2;
+  expose ZC_PHONE_IMAGE2;
 }
