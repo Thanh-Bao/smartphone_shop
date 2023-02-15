@@ -77,7 +77,7 @@ router.get("/", async (ctx) => {
     ____________________________________SAP_Trial_Entity_List____________________________________: [{
       Service_binding: "ZBUI_PHONE_INFO",
       Entity: ["ZC_PHONE_INFO"],
-      Path: "/ZBUI_PHONE_INFO/ZC_PHONE_INFO"
+      Path: "/ZBUI_PHONE_INFO2/ZC_PHONE_INFO2"
     }],
     ____________________________________site_map____________________________________: {
       new_token_manual: "/renew_access_token",
