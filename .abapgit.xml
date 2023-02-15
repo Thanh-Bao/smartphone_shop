@@ -17,7 +17,6 @@
     <item>/*.yml</item>
     <item>/*.xml</item>
     <item>/*.baseinfo</item>
-    <item>/*.asddls</item>
    </IGNORE>
   </DATA>
  </asx:values>
