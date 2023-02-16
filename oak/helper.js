@@ -1,4 +1,4 @@
-import { access_token, accountAuthen, authenURL, baseURL, setAccess_token, MySQL_config } from './config.js';
+import { access_token, accountAuthen, authenURL, SAP_Endpoint, setAccess_token, MySQL_config } from './config.js';
 import { encode } from "https://deno.land/std/encoding/base64.ts"
 
 
