@@ -1,4 +1,4 @@
-@EndUserText.label: '.'
+@EndUserText.label: 'Attachment projection'
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 
 @UI.headerInfo: {

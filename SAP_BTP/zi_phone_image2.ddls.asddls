@@ -1,7 +1,6 @@
+@AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: '.'
-
-@AbapCatalog.viewEnhancementCategory: [#NONE]
 @Metadata.ignorePropagatedAnnotations: true
 @ObjectModel.usageType:{
     serviceQuality: #X,
@@ -13,6 +12,7 @@ define view entity zi_phone_image2
   association to parent ZI_PHONE_INFO2 as _Phone on $projection.phone_id = _Phone.id
 {
   key id,
+      @EndUserText.label: 'Phone ID'
       phone_id,
       @EndUserText.label: 'Attachment'
       @Semantics.largeObject: {
@@ -23,6 +23,7 @@ define view entity zi_phone_image2
       attachment,
       @EndUserText.label: 'Type of Document'
       minetype,
+      @EndUserText.label: 'File Type'
       filename,
       _Phone
 }
