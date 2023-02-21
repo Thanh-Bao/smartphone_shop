@@ -79,7 +79,8 @@ http POST example:
         Content-Type: 'application/json',
         Authorization : 'Bearer eyJhbGciOiJSUzI1N................iIsImprdSIsyQ' ,
         x-csrf-token : 'RzYQ_UyfwIE0IZWR4N1E1A==',
-        Cookie: "SAP_SESSIONID_TRL_100=v9OWXFl4YMmAWeDKbzHiB71t3vWxxBHtpUVOpgiOAq8%3d; sap-usercontext=sap-client=100"    },
+        Cookie: "SAP_SESSIONID_TRL_100=v9OWXFl4YMmAWeDKbzHiB71t3vWxxBHtpUVOpgiOAq8%3d; sap-usercontext=sap-client=100"    
+     },
      body: JSON.stringify({
      id: 999777,
     name: "Samsung 999" })
