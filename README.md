@@ -63,3 +63,25 @@ On Vercel PaaS service, can not get abc, xyz value. But it works at localhost.
 # Tutorial
 
 - https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
+
+# Note 
+
+http POST example: 
+
+```javascript
+ {
+  'method': 'POST',
+  'url': "https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com/sap/opu/odata/sap/ZBUI_PHONE_INFO3/ZC_PHONE_INFO3" ,
+  'responseType':'json', 
+  'resolveBodyOnly':true ,
+   headers: {      
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization' : 'Bearer eyJhbGciOiJSUzI1N................iIsImprdSIsyQ' ,
+        'x-csrf-token' : 'RzYQ_UyfwIE0IZWR4N1E1A==',
+        'Cookie': "SAP_SESSIONID_TRL_100=v9OWXFl4YMmAWeDKbzHiB71t3vWxxBHtpUVOpgiOAq8%3d; sap-usercontext=sap-client=100"    },
+     body: JSON.stringify({
+     "id": 999777,
+    "name": "Samsung 999" })
+};
+```
