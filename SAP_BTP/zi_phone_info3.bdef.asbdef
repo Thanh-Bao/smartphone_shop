@@ -1,0 +1,30 @@
+managed implementation in class zbp_i_phone_info3 unique;
+//strict ( 1 );
+
+define behavior for ZI_PHONE_INFO3 //alias <alias_name>
+persistent table ZPHONE_INFO3
+lock master
+//authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Phone_Images { create; }
+
+   mapping for zphone_info3 corresponding {}
+}
+
+define behavior for zi_phone_image3 //alias <alias_name>
+persistent table ZPHONE_IMAGE3
+lock dependent by _Phone
+//authorization dependent by _Phone
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) phone_id;
+  association _Phone;
+
+  mapping for zphone_image3 corresponding {}
+}
