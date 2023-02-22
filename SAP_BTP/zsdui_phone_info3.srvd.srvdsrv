@@ -1,0 +1,5 @@
+@EndUserText.label: '.'
+define service ZSDUI_PHONE_INFO3 {
+  expose ZC_PHONE_INFO3;
+  expose ZC_PHONE_IMAGE3;
+}
