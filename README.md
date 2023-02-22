@@ -32,7 +32,7 @@
 # SAP
 
 - Account: SAP BTP trial: 18130017@st.hcmuaf.edu.vn
-- Package: ZSMARTPHONE_SHOP
+- Package: ZSMARTPHONE_SHOP3
 
 | Transport request | Owner        | User UUID                            | Target | Description     |
 | ----------------- | ------------ | ------------------------------------ | ------ | --------------- |
