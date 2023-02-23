@@ -45,7 +45,6 @@ serve(async req => {
           headers: { "Authorization": `Bearer ${access_token}` }
         });
         const json = await SAPresponse.json();
-        console.log(url.origin)
         const result = JSON.stringify(json).replaceAll(SAP_Endpoint, url.origin);
         return new Response(result);
       } catch (error) {
