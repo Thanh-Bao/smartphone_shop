@@ -10,7 +10,8 @@ await fetchNewToken();
 
 serve(async req => {
 
-  const { pathname } = new URL(req.url);
+  const url = new URL(req.url);
+  const pathname = url.pathname;
 
   switch (pathname) {
     case "/renew_access_token":
@@ -44,6 +45,7 @@ serve(async req => {
           headers: { "Authorization": `Bearer ${access_token}` }
         });
         const json = await SAPresponse.json();
+        console.log(url.origin)
         const result = JSON.stringify(json).replaceAll(SAP_Endpoint, url.origin);
         return new Response(result);
       } catch (error) {

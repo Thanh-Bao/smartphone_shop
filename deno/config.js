@@ -11,6 +11,7 @@ export const accountAuthen = {
 
 // 2. Odata 
 export const SAP_Endpoint = "https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com/sap/opu/odata/sap";
+
 export const convertURL = path =>
     `${SAP_Endpoint + path}?$format=json`
 
