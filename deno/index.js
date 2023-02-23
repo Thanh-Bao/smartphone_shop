@@ -2,30 +2,22 @@
 // denon run --allow-env --allow-net index.js
 
 import { serve } from "https://deno.land/std@0.155.0/http/server.ts";
-import { decode } from "https://deno.land/std/encoding/base64.ts"
 
 import { access_token, SAP_Endpoint, convertURL } from './config.js';
-import { formatDateTime, fetchNewToken } from './helper.js';
-
-const GMT_7 = 25200;
+import { fetchNewToken, getJWTpayload } from './helper.js';
 
 await fetchNewToken();
 
 serve(async req => {
-  const url = new URL(req.url);
-  const pathname = url.pathname;
+
+  const { pathname } = new URL(req.url);
 
   switch (pathname) {
     case "/renew_access_token":
       try {
-        const json = await fetchNewToken();
-        //. get time expried token
-        const JWT = json.access_token.split(".");
-        const JWT_payload = JSON.parse(new TextDecoder().decode(decode(JWT[1])));
-        JWT_payload.exp = JWT_payload.exp + GMT_7;
-
-        console.log(json);
-        return new Response(JSON.stringify({ ...json, __________the_token_after_decode__________: JWT_payload }));
+        const _access_token = await fetchNewToken();
+        console.log(_access_token);
+        return new Response(JSON.stringify({ _access_token, __________the_token_after_decode__________: getJWTpayload(_access_token) }));
       } catch (error) {
         console.log(error.message);
         return new Response(JSON.stringify(error.message)).status == 401;
@@ -42,7 +34,7 @@ serve(async req => {
         },
         ____________________________________current_access_token____________________________________: {
           access_token: access_token
-          , Expired_time: formatDateTime(token_Log["0"].Expired_time)
+          , Expired_time: getJWTpayload(access_token).exp
         }
       }));
     default:
