@@ -15,16 +15,6 @@ export const convertURL = path =>
     `${SAP_Endpoint + path}?$format=json`
 
 // **********************************************************************************************************************************************
-
 export const setAccess_token = (new_token) => access_token = new_token;
 
-// **********************************************************************************************************************************************
-
-export const MySQL_config = {
-    hostname: "45.252.250.6",
-    username: "elhnhxqj_oak",
-    db: "elhnhxqj_oak",
-    poolSize: 3, // connection pool limit
-    password: "Admin123@#AAA",
-}
 
