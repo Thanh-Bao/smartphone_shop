@@ -7,8 +7,9 @@ import { cron } from 'https://deno.land/x/deno_cron/cron.ts';
 import { access_token, SAP_Endpoint, convertURL } from './config.js';
 import { fetchNewToken, getJWTpayload } from './helper.js';
 
-fetchNewToken();
-cron('1 */1 * * * *', () => {
+await fetchNewToken();
+cron('0 0 */2 ? * *', () => {
+  // https://www.freeformatter.com/cron-expression-generator-quartz.html
   fetchNewToken();
 });
 

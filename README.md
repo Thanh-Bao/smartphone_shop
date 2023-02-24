@@ -11,21 +11,19 @@
 | Oak           | [oak.bao.name.vn](https://oak.bao.name.vn)                                                                                                   | [deno.land](https://deno.land)          | Bypass CORS, Authorization (JWT)           |                             | Online  |
 | NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)                      | Home page, Product detail.                 |                             | Offline |
 | ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)                      | Profile page, order page, login page, etc. |                             | Offline |
-| MySQL         | 45.252.250.6                                                                                                                                 | [azdigi.com](https://azdigi.com)        | logger for Oak                             |                             | Online  |
 | Angular       | [angular-sapui5.web.app](https://angular-sapui5.web.app)                                                                                     | [firebase](https://firebase.google.com) | beta phase                                 |                             | Online  |
 
 ---
 
 | Service name                               | Target      | Description                                                  |
 | ------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| [cron-job.org](https://cron-job.org)       | oak server  | renew token, monitor, email alert                            |
 | [uptimerobot.com](https://uptimerobot.com) | oak, nextJS | monitor, email alert                                         |
 | [checklyhq.com](https://checklyhq.com)     | oak, nextJS | monitor, email alert, speed test in many different countries |
 | [discord.com](https://discord.com)         | SAP         | new order notifications                                      |
 
 ---
 
-![img](https://github.com/Thanh-Bao/smartphone_shop/blob/e2222f3b29a3d8b5890258e8d1ae66154ae70959/design_system.jpg)
+![img](https://github.com/Thanh-Bao/smartphone_shop/blob/ad0acf2820313dd74f37a0aeb57fda79c10c2b64/deno/oak.bao.name.vn.drawio.png)
 
 ---
 
@@ -64,22 +62,22 @@ On Vercel PaaS service, can not get abc, xyz value. But it works at localhost.
 
 - https://blogs.sap.com/2019/05/09/sap-cloud-platform-backend-service-tutorial-15-security-using-authorization-code-grant/
 
-# Note 
+# Note
 
-http POST example: 
+http POST example:
 
 ```javascript
  {
   method : 'POST',
   url: "https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com/sap/opu/odata/sap/ZBUI_PHONE_INFO3/ZC_PHONE_INFO3" ,
-  responseType:'json', 
+  responseType:'json',
   resolveBodyOnly:true ,
-  headers: {      
+  headers: {
         Accept : 'application/json',
         Content-Type: 'application/json',
         Authorization : 'Bearer eyJhbGciOiJSUzI1N................iIsImprdSIsyQ' ,
         x-csrf-token : 'RzYQ_UyfwIE0IZWR4N1E1A==',
-        Cookie: "SAP_SESSIONID_TRL_100=v9OWXFl4YMmAWeDKbzHiB71t3vWxxBHtpUVOpgiOAq8%3d; sap-usercontext=sap-client=100"    
+        Cookie: "SAP_SESSIONID_TRL_100=v9OWXFl4YMmAWeDKbzHiB71t3vWxxBHtpUVOpgiOAq8%3d; sap-usercontext=sap-client=100"
      },
   body: JSON.stringify({
      id: 999777,
