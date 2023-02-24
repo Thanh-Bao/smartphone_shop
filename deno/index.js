@@ -2,11 +2,15 @@
 // denon run --allow-env --allow-net index.js
 
 import { serve } from "https://deno.land/std@0.155.0/http/server.ts";
+import { cron } from 'https://deno.land/x/deno_cron/cron.ts';
 
 import { access_token, SAP_Endpoint, convertURL } from './config.js';
 import { fetchNewToken, getJWTpayload } from './helper.js';
 
-await fetchNewToken();
+fetchNewToken();
+cron('1 */1 * * * *', () => {
+  fetchNewToken();
+});
 
 serve(async req => {
 
