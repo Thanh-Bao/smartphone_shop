@@ -1,4 +1,4 @@
-import { accountAuthen, authenURL, setAccess_token } from './config.js';
+import { accountAuthen, authenURL, setAccess_token, access_token } from './config.js';
 import { encode, decode } from "https://deno.land/std/encoding/base64.ts"
 
 
@@ -31,9 +31,10 @@ export const fetchNewToken = async () => {
     // 1. get new token from SAP server
     const json = await SAPresponse.json();
     // 2. set new token on this Oak server
-    const access_token = json.access_token;
-    setAccess_token(access_token);
-    return access_token;
+    const _access_token = json.access_token;
+    setAccess_token(_access_token);
+    console.log(access_token);
+    return _access_token;
 }
 
 

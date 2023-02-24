@@ -22,7 +22,6 @@ serve(async req => {
     case "/renew_access_token":
       try {
         const _access_token = await fetchNewToken();
-        console.log(_access_token);
         return new Response(JSON.stringify({ _access_token, __________the_token_after_decode__________: getJWTpayload(_access_token) }));
       } catch (error) {
         console.log(error.message);

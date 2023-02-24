@@ -5,13 +5,12 @@
 [![](https://img.shields.io/badge/style-plastic-green.svg?longCache=true&style=plastic)](https://shop.bao.name.vn)
 [![](https://img.shields.io/github/stars/badges/shields.svg?style=social)](https://shop.bao.name.vn)
 
-| Instance name | domain /IP                                                                                                                                   | Infrastructur                           | Description                                | Note                        | status  |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------ | --------------------------- | ------- |
-| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                               |                                            | Domain not contain "_-web_" | Online  |
-| Oak           | [oak.bao.name.vn](https://oak.bao.name.vn)                                                                                                   | [deno.land](https://deno.land)          | Bypass CORS, Authorization (JWT)           |                             | Online  |
-| NextJS        | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)                      | Home page, Product detail.                 |                             | Offline |
-| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | on premise (nginx)                      | Profile page, order page, login page, etc. |                             | Offline |
-| Angular       | [angular-sapui5.web.app](https://angular-sapui5.web.app)                                                                                     | [firebase](https://firebase.google.com) | beta phase                                 |                             | Online  |
+| Instance name | domain /IP                                                                                                                                   | Infrastructur                           | Description                      | Note                        | status  |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | -------------------------------- | --------------------------- | ------- |
+| SAP           | [6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com](https://6654aaf7-905f-48ea-b013-3811c03fcba8.abap.us10.hana.ondemand.com) | BTP Trial                               |                                  | Domain not contain "_-web_" | Online  |
+| Oak           | [oak.bao.name.vn](https://oak.bao.name.vn)                                                                                                   | [deno.land](https://deno.land)          | Bypass CORS, Authorization (JWT) |                             | Online  |
+| ReactJS       | [shop.bao.name.vn](https://shop.bao.name.vn)                                                                                                 | firebase or vercel                      |                                  |                             | Offline |
+| Angular       | [angular-sapui5.web.app](https://angular-sapui5.web.app)                                                                                     | [firebase](https://firebase.google.com) | beta phase                       |                             | Online  |
 
 ---
 
