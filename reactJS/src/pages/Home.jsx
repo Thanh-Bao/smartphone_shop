@@ -8,6 +8,7 @@ import {
   Carousel,
 } from "@ui5/webcomponents-react";
 import CustomCard from "../components/Card";
+import "../css/Home.css";
 
 import { setTheme } from "@ui5/webcomponents-base/dist/config/Theme.js";
 setTheme("sap_belize_hcb");
@@ -52,7 +53,6 @@ const Home = () => {
         showNotifications
         showProductSwitch
         showSearchField
-        style={{}}
         waitForDefine
       />
       <hr />

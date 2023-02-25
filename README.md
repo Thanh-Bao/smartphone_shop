@@ -22,7 +22,7 @@
 
 ---
 
-![img](https://github.com/Thanh-Bao/smartphone_shop/blob/ad0acf2820313dd74f37a0aeb57fda79c10c2b64/deno/oak.bao.name.vn.drawio.png)
+![img](<https://github.com/Thanh-Bao/smartphone_shop/blob/main/oak.bao.name.vn.drawio%20(1).png>)
 
 ---
 
