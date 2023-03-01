@@ -22,7 +22,7 @@
 
 ---
 
-![img](<https://github.com/Thanh-Bao/smartphone_shop/blob/main/oak.bao.name.vn.drawio%20(1).png>)
+![img](https://github.com/Thanh-Bao/smartphone_shop/blob/main/oak.bao.name.vn.drawio%20(1).png)
 
 ---
 
@@ -36,21 +36,6 @@
 | TRLK912520        | CB9980007210 | 8593f739-10e6-47e4-a4d1-d3020b21ac88 |        | Smartphone Shop |
 
 To get JWT: <authen_domain>/oauth/token?grant_type=password&username=18130017@st.hcmuaf.edu.vn&password=< password >
-
-# Oak (deno framwork)
-
-```javascript
-app.get("/p/:abc/:xyz", function (req, res) {
-  res.send("path is " + req.params.abc, req.params.xyz);
-}); // ExpressJS controller.
-```
-
-On Vercel PaaS service, can not get abc, xyz value. But it works at localhost.
-
-# VPS for reactJS & NextJS
-
-- account: bao
-- password: Admin123@#AAA
 
 # Link reference:
 
