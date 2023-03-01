@@ -4,7 +4,7 @@
 import { serve } from "https://deno.land/std@0.155.0/http/server.ts";
 import { cron } from 'https://deno.land/x/deno_cron/cron.ts';
 
-import { access_token, SAP_Endpoint, convertURL, HOME_PAGE } from './config.js';
+import { access_token, SAP_Endpoint, convertURL } from './config.js';
 import { fetchNewToken, getJWTpayload } from './helper.js';
 
 await fetchNewToken();
@@ -28,7 +28,20 @@ serve(async req => {
         return new Response(JSON.stringify(error.message)).status == 401;
       }
     case "/":
-      return new Response("HOME_PAGEs");
+      return new Response(JSON.stringify({
+        "____________________________________SAP_Trial_Entity_List____________________________________": [{
+          "Service_binding": "ZBUI_PHONE_INFO3",
+          "Entity": ["ZC_PHONE_INFO3"],
+          "Path": "/ZBUI_PHONE_INFO3/ZC_PHONE_INFO3"
+        }],
+        "____________________________________site_map____________________________________": {
+          "renew_token": "/renew_token",
+        },
+        "____________________________________current_access_token____________________________________": {
+          "access_token": access_token
+          , "Expired_time": getJWTpayload(access_token).exp
+        }
+      }));
     default:
       try {
         const SAPresponse = await fetch(convertURL(pathname), {

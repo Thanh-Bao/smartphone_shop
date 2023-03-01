@@ -1,3 +1,4 @@
+
 export let access_token = "";
 
 //http Authorization headers type: Basic Auth (username and password encode to base64)
@@ -18,19 +19,5 @@ export const convertURL = path =>
 // **********************************************************************************************************************************************
 export const setAccess_token = (new_token) => access_token = new_token;
 
-export const HOME_PAGE = JSON.stringify({
-    "____________________________________SAP_Trial_Entity_List____________________________________": [{
-        "Service_binding": "ZBUI_PHONE_INFO3",
-        "Entity": ["ZC_PHONE_INFO3"],
-        "Path": "/ZBUI_PHONE_INFO3/ZC_PHONE_INFO3"
-    }],
-    "____________________________________site_map____________________________________": {
-        "renew_token": "/renew_token",
-    },
-    "____________________________________current_access_token____________________________________": {
-        "access_token": access_token
-        , "Expired_time": getJWTpayload(access_token).exp
-    }
-})
 
 
