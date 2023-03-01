@@ -28,7 +28,7 @@ serve(async req => {
         return new Response(JSON.stringify(error.message)).status == 401;
       }
     case "/":
-      return new Response(HOME_PAGE);
+      return new Response("HOME_PAGEs");
     default:
       try {
         const SAPresponse = await fetch(convertURL(pathname), {
