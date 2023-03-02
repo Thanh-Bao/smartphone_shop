@@ -37,7 +37,7 @@ export default async function getToken(): Promise<string | undefined> {
         }
 
         return String(res.data['access_token']);
-    } catch (e) {
+    } catch (e:any) {
         if (e instanceof axios.AxiosError) {
             const res = e.response;
 
