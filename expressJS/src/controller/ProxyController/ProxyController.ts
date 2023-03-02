@@ -108,7 +108,10 @@ class ProxyController {
             }
 
             // response
-            return res.status(sapResponse.status).send(sapResponse.data).end();
+            return res
+                .status(sapResponse.status)
+                .send(JSON.stringify(sapResponse.data).replaceAll(__env.SAP_ENDPOINT, req.baseUrl))
+                .end();
         } catch (e) {
             if (e instanceof axios.AxiosError) {
                 const sapResponse = e.response;
