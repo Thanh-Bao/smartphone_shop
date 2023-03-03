@@ -1,9 +1,11 @@
+import { formatDateTime } from '../Format/Format';
+
 export type LogItemContent = string | number | CommonObject;
 
 export interface LogItemType {
     label: string;
     contents: LogItemContent;
-    createdAt: Date;
+    createdAt: number;
 }
 // Bearer + token
 class MemoStorage {
@@ -28,7 +30,7 @@ class MemoStorage {
 
     public addLog = (label: string, v: LogItemContent) => {
         this._logs.push({
-            createdAt: new Date(),
+            createdAt: Math.floor(Date.now() / 1000),
             label,
             contents: v,
         });

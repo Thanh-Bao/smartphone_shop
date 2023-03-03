@@ -19,3 +19,21 @@ export function json(subject: string) {
         parser: 'json',
     });
 }
+
+export const formatDateTime = (timestamp: number) => {
+    const dateFormat = new Date(timestamp * 1000);
+    const result =
+        dateFormat.getHours() +
+        'h:' +
+        dateFormat.getMinutes() +
+        "':" +
+        dateFormat.getSeconds() +
+        's' +
+        ' - ' +
+        dateFormat.getDate() +
+        '/' +
+        (dateFormat.getMonth() + 1) +
+        '/' +
+        dateFormat.getFullYear();
+    return result;
+};

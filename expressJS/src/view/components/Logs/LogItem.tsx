@@ -2,6 +2,7 @@ import React from 'ts-rssr';
 import Format from '../../../util/Format';
 import { LogItemType } from '../../../util/MemoStorage/MemoStorage';
 import codeHighlighter from 'highlight.js/lib/common';
+import { formatDateTime } from '../../../util/Format/Format';
 
 export interface ILogsItemProps {
     logItem: LogItemType;
@@ -40,17 +41,7 @@ export default function LogItem(props: ILogsItemProps) {
 
     return (
         <li className='log-item'>
-            <div className='time'>
-                {props.logItem.createdAt.toLocaleString('vi-VN', {
-                    hour12: false,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                })}
-            </div>
+            <div className='time'>{formatDateTime(props.logItem.createdAt)}</div>
             <div className='content'>
                 <h3 className='label'>{props.logItem.label}</h3>
                 <div className='code'>
